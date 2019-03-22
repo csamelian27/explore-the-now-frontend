@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch } from "react-router-dom";
 import Navbar from './Components/Navbar';
+import CreateTask from './Components/CreateTask';
+import CurrentTask from './Components/CurrentTask';
+import Home from './Components/Home';
 
 class App extends Component {
 
@@ -14,9 +17,9 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route path="/createtask" component={<CreateTask />}/>
-          <Route path="/" component={<CurrentTask />}/>
-          <Route path="/" component={<Home />}/>
+          <Route path="/create-task" render={() => <CreateTask user={this.state.user}/>} />
+          <Route path="/current-task" render={() => <CurrentTask user={this.state.user}/>} />
+          <Route path="/" component={Home}/>
         </Switch>
 
       </div>

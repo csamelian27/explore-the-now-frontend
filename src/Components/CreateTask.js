@@ -1,7 +1,11 @@
 import React from 'react';
 
-class ToDo extends React.Component {
-
+class CreateTask extends React.Component {
+render() {
+  return (
+    <h1>Create Task</h1>
+  )
+}
 }
 
-export default ToDo
+export default CreateTask

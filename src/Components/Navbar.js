@@ -12,10 +12,6 @@ const Nav = (props) => {
                 </a>
             </div>
 
-
-
-
-
               <button type="button" className="btn btn-light navbar-btn navbar-right">Log in</button>
               <button type="button" className="btn btn-light navbar-btn navbar-right">Sign up</button>
 
