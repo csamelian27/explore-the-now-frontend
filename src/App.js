@@ -23,7 +23,7 @@ class App extends Component {
           <Route path="/current-task" render={() => <CurrentTask user={this.state.user}/>} />
           <Route path="/signup" render={() => <Login user={this.state.user}/>} />
           <Route path="/login" render={() => <Signup user={this.state.user}/>} />
-          <Route path="/" component={Home}/>
+          <Route exact path="/" component={Home}/>
         </Switch>
 
       </div>

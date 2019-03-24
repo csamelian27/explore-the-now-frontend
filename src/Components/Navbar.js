@@ -8,9 +8,11 @@ const Nav = (props) => {
 
             <div className="navbar-header">
 
+                <NavLink to="/">
                 <a className="navbar-brand">
                     Explore the Now
                 </a>
+                </NavLink>
             </div>
               <NavLink to="/signup">
                 <button type="button" className="btn btn-light navbar-btn navbar-right">Log in</button>
