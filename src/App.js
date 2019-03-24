@@ -8,7 +8,11 @@ import Home from './Components/Home';
 import Login from './Components/Login'
 import Signup from './Components/Signup'
 
+// console.log(process.env.REACT_APP_API_KEY)
+// console.log("JWT", process.env.REACT_APP_JWT_KEY)
+
 class App extends Component {
+
 
   state = {
     user: {}

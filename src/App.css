@@ -78,6 +78,10 @@
     }
 }
 
+.navbar button {
+  margin-left: 10px;
+}
+
 .home {
   margin-top: 100px;
 }
