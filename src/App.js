@@ -5,6 +5,8 @@ import Navbar from './Components/Navbar';
 import CreateTask from './Components/CreateTask';
 import CurrentTask from './Components/CurrentTask';
 import Home from './Components/Home';
+import Login from './Components/Login'
+import Signup from './Components/Signup'
 
 class App extends Component {
 
@@ -19,6 +21,8 @@ class App extends Component {
         <Switch>
           <Route path="/create-task" render={() => <CreateTask user={this.state.user}/>} />
           <Route path="/current-task" render={() => <CurrentTask user={this.state.user}/>} />
+          <Route path="/signup" render={() => <Login user={this.state.user}/>} />
+          <Route path="/login" render={() => <Signup user={this.state.user}/>} />
           <Route path="/" component={Home}/>
         </Switch>
 

@@ -3,7 +3,9 @@ import React from 'react';
 class CreateTask extends React.Component {
 render() {
   return (
-    <h1>Create Task</h1>
+    <div className="create-task">
+      <h1>Create Task</h1>
+    </div>
   )
 }
 }

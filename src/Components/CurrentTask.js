@@ -3,7 +3,9 @@ import React from 'react';
 class CurrentTask extends React.Component {
 render() {
   return (
-    <h1>Current Task</h1>
+    <div className="current-task">
+      <h1>Current Task</h1>
+    </div>
   )
 }
 }

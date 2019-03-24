@@ -77,3 +77,23 @@
           color: #333;
     }
 }
+
+.home {
+  margin-top: 100px;
+}
+
+.create-task {
+  margin-top: 100px;
+}
+
+.current-task {
+  margin-top: 100px;
+}
+
+.signup {
+  margin-top: 100px;
+}
+
+.login {
+  margin-top: 100px;
+}
