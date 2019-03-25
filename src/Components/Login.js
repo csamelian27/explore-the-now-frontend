@@ -27,7 +27,7 @@ render() {
     <div className="login">
       <h1>Log In</h1>
       <form onSubmit={this.loginSubmitHandler}>
-        <input type="text" placeholder="email"
+        <input type="email" placeholder="email"
         value={this.state.email} onChange={this.changeHandler} />
         <input type="password" placeholder="password"
         value={this.state.password} onChange={this.changeHandler} />

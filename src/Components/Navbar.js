@@ -14,10 +14,10 @@ const Nav = (props) => {
                 </a>
                 </NavLink>
             </div>
-              <NavLink to="/signup">
+              <NavLink to="/login">
                 <button type="button" className="btn btn-light navbar-btn navbar-right">Log in</button>
               </NavLink>
-              <NavLink to="/login">
+              <NavLink to="/signup">
               <button type="button" className="btn btn-light navbar-btn navbar-right">Sign up</button>
               </NavLink>
 
