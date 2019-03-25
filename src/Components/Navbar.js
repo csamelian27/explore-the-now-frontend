@@ -16,16 +16,17 @@ const Nav = (props) => {
             </div>
               <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-              <NavLink to="/signup">
+              <NavLink to="/login">
                 <button type="button" className="navbar-toggler">Log in</button>
               </NavLink>
               </li>
               <li className="nav-item">
-              <NavLink to="/login">
+              <NavLink to="/signup">
               <button type="button" className="navbar-toggler">Sign up</button>
               </NavLink>
               </li>
               </ul>
+
 
         </div>
     </nav>

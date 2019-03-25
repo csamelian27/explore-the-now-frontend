@@ -14,4 +14,4 @@ render() {
 }
 }
 
-export default CurrentTask
+export default TasksHome
