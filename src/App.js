@@ -38,7 +38,6 @@ class App extends Component {
       : this.props.history.push("/signup");
   };
 
-
 // Sign up submit handler posts userInfo (which is the current sign up form state) to
 // our backend API. It also saves a jwt token to the local storage and pushes the
 // user to "/tasks-home"
@@ -73,9 +72,14 @@ class App extends Component {
   })
     .then(resp => resp.json())
     .then(userData => {
-      this.setState({ user: userData.user })
-      localStorage.setItem("token", userData.jwt)
-      this.props.history.push("/tasks-home")
+      console.log(userData);
+      if(userData.message) {
+        this.props.history.push("/login");
+      } else {
+        this.setState({ user: userData.user })
+        localStorage.setItem("token", userData.jwt)
+        this.props.history.push("/tasks-home")
+      }
     });
 };
 
