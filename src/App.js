@@ -25,7 +25,7 @@ class App extends Component {
           headers: {
             "content-type": "application/json",
             "accepts": "application/json",
-            "Authorization": `${token}`
+            "Authorization": `Bearer ${token}`
           }
         })
           .then(resp => resp.json())
@@ -84,6 +84,7 @@ class App extends Component {
 };
 
   render() {
+    console.log(this.state);
     return (
       <div className="App">
         <Navbar />

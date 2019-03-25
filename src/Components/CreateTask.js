@@ -19,10 +19,16 @@ class CreateTask extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.handleInput(this.state)
+    this.setState({
+      term: '',
+      location: '',
+      price: '',
+      radius: ''
+    })
   }
 
   render() {
-    const activityCards = this.props.businesses.map(businessObj => <ActivityCard key={businessObj.id} business={businessObj} handleAddActivity={this.props.handleAddActivity} />).slice(0, 3)
+    const activityCards = this.props.businesses.map(businessObj => <ActivityCard key={businessObj.id} business={businessObj} handleAddActivity={this.props.handleAddActivity} button="fa fa-plus fa-3x" />).slice(0, 3)
     console.log(activityCards);
     return (
       <div className="create-task">

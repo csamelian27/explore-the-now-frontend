@@ -23,11 +23,13 @@ class TasksHome extends React.Component {
   }
 
   handleAddActivity = (activityInfo) => {
-    console.log(activityInfo);
     this.setState({
       currentTask: activityInfo
     })
+  }
 
+  handleConfirmActivity = (activityInfo) => {
+    console.log(this.props);
     fetch('http://localhost:3000/api/v1/activities', {
       method: 'POST',
       headers: {
@@ -36,7 +38,17 @@ class TasksHome extends React.Component {
       },
       body: JSON.stringify({activity: {term: activityInfo.categories[0].title, location: activityInfo.location.display_address.join(", ")}})
     }).then(resp => resp.json())
-      .then(console.log)
+      .then(activity => {
+        fetch('http://localhost:3000/api/v1/experiences', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accepts': 'application/json'
+          },
+          body: JSON.stringify({experience: {date:Date.now(), user_id: this.props.user.id, activity_id: activity.id}})
+        }).then(resp => resp.json())
+          .then(console.log)
+      })
   }
 
   render() {
@@ -44,8 +56,7 @@ class TasksHome extends React.Component {
     return (
       <div className="current-task">
         <h1>Tasks Home</h1>
-        <CreateTask handleInput={this.handleInput} businesses={this.state.businesses} handleAddActivity={this.handleAddActivity} />
-        <CurrentTask currentTask={this.state.currentTask} />
+        {this.state.currentTask ? <CurrentTask currentTask={this.state.currentTask} handleAddActivity={this.handleConfirmActivity} /> : <CreateTask handleInput={this.handleInput} businesses={this.state.businesses} handleAddActivity={this.handleAddActivity} />}
       </div>
     )
   }

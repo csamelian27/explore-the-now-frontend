@@ -7,7 +7,6 @@ class ActivityCard extends React.Component {
   }
 
   render() {
-    console.log(this.props.business);
     return (
       <div className="activity-card">
         <div className="card">
@@ -22,7 +21,7 @@ class ActivityCard extends React.Component {
         </div>
         <h5>12</h5>
         <h6>JANUARY</h6>
-        <div className="fab" onClick={() => this.props.handleAddActivity(this.props.business) } ><i className="fa fa-plus fa-3x"></i></div>
+        <div className="fab" onClick={() => this.props.handleAddActivity(this.props.business)}><i className={this.props.button}></i></div>
         </div>
       </div>
     )
