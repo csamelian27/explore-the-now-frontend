@@ -9,7 +9,7 @@ state = {
 
 changeHandler = e => {
    this.setState({
-     [e.target.placeholder]: e.target.value
+     [e.target.name]: e.target.value
    });
  };
 
@@ -27,10 +27,15 @@ render() {
     <div className="login">
       <h1>Log In</h1>
       <form onSubmit={this.loginSubmitHandler}>
+<<<<<<< HEAD
         <input type="email" placeholder="email"
         value={this.state.email} onChange={this.changeHandler} />
         <input type="password" placeholder="password"
         value={this.state.password} onChange={this.changeHandler} />
+=======
+        <input type="email" name="email" placeholder="email" value={this.state.email} onChange={this.changeHandler} />
+        <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.changeHandler} />
+>>>>>>> 501c432526b2d5ffa625dd61fabfb40dedbed413
         <button>Log In</button>
       </form>
     </div>
