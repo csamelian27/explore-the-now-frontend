@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import Navbar from './Components/Navbar';
-import CreateTask from './Components/CreateTask';
-import CurrentTask from './Components/CurrentTask';
+import TasksHome from './Containers/TasksHome'
 import Home from './Components/Home';
 import Login from './Components/Login'
 import Signup from './Components/Signup'
@@ -18,9 +17,32 @@ class App extends Component {
     user: {}
   }
 
+// grabs the current user with the backend route based on if a token is in localstorage.
+  componentDidMount = () => {
+    let token = localStorage.token;
+    token
+      ? fetch("http://localhost:3000/api/v1/current_user", {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+            "accepts": "application/json",
+            "Authorization": `${token}`
+          }
+        })
+          .then(resp => resp.json())
+          .then(user => {
+            this.setState({ user }, () => {
+              console.log(user);
+              this.props.history.push("/tasks-home");
+            });
+          })
+      : this.props.history.push("/signup");
+  };
+
+
 // Sign up submit handler posts userInfo (which is the current sign up form state) to
 // our backend API. It also saves a jwt token to the local storage and pushes the
-// user to "/create-task"
+// user to "/tasks-home"
   signupSubmitHandler = (userInfo) => {
     fetch( "#", {
       method: "POST",
@@ -34,18 +56,36 @@ class App extends Component {
       .then(userData => {
         this.setState({ user: userData.user}, () => {
           localStorage.setItem("token", userData.jwt);
-          this.props.history.push("/create-task");
+          this.props.history.push("/tasks-home");
         });
       });
   }
+
+// login handler sends over userInfo body
+  loginSubmitHandler = (userInfo) => {
+  fetch("http://localhost:3000/api/v1/login", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      "accepts": "application/json"
+    },
+    body: JSON.stringify( userInfo )
+  })
+    .then(resp => resp.json())
+    .then(
+      userData => this.setState({ user: userData.user }),
+      localStorage.setItem("token", userData.jwt),
+      console.log(localStorage),
+      () => this.props.history.push("/tasks-home")
+    );
+};
 
   render() {
     return (
       <div className="App">
         <Navbar />
         <Switch>
-          <Route path="/create-task" render={() => <CreateTask user={this.state.user}/>} />
-          <Route path="/current-task" render={() => <CurrentTask user={this.state.user}/>} />
+          <Route path="/tasks-home" render={() => <TasksHome user={this.state.user}/>} />
           <Route path="/signup" render={() => <Login user={this.state.user}/>} />
           <Route path="/login" render={() => <Signup signupSubmitHandler={this.signupSubmitHandler} user={this.state.user}/>} />
           <Route exact path="/" component={Home}/>
@@ -56,4 +96,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
