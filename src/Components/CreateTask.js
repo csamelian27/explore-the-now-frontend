@@ -6,8 +6,9 @@ class CreateTask extends React.Component {
   state = {
     term: '',
     location: '',
-    price: '',
-    radius: ''
+    price: this.props.user.price,
+    radius: this.props.user.radius,
+    count: 3
   }
 
   handleChange = (e) => {
@@ -27,8 +28,14 @@ class CreateTask extends React.Component {
     })
   }
 
+  handleReroll = () => {
+    this.setState({
+      count: this.state.count + 3
+    })
+  }
+
   render() {
-    const activityCards = this.props.businesses.map(businessObj => <ActivityCard key={businessObj.id} business={businessObj} handleAddActivity={this.props.handleAddActivity} button="fa fa-plus fa-3x" />).slice(0, 3)
+    const activityCards = this.props.businesses.map(businessObj => <ActivityCard key={businessObj.id} business={businessObj} handleAddActivity={this.props.handleAddActivity} button="fa fa-plus fa-3x" />).slice(this.state.count - 3, this.state.count)
     console.log(activityCards);
     return (
       <div className="create-task">
@@ -41,6 +48,7 @@ class CreateTask extends React.Component {
           <input type="submit" value="Submit!" />
         </form>
         {activityCards}
+        {this.props.businesses.length > 0 ? <button onClick={this.handleReroll}>Re-roll</button> : null}
       </div>
     )
   }

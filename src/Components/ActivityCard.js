@@ -21,6 +21,7 @@ class ActivityCard extends React.Component {
         </div>
         <h5>12</h5>
         <h6>JANUARY</h6>
+        <ul><li><a href={this.props.business.url} target="_blank">Visit Website</a></li></ul>
         <div className="fab" onClick={() => this.props.handleAddActivity(this.props.business)}><i className={this.props.button}></i></div>
         </div>
       </div>

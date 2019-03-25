@@ -1,12 +1,12 @@
 import React from 'react';
 import CreateTask from '../Components/CreateTask';
-import CurrentTask from '../Components/CurrentTask';
+import SelectedActivityContainer from '../Components/SelectedActivityContainer';
 
-class TasksHome extends React.Component {
+class ActivitiesHome extends React.Component {
 
   state = {
     businesses: [],
-    currentTask: null
+    SelectedActivityContainer: null
   }
 
   handleInput = (userInput) => {
@@ -24,12 +24,11 @@ class TasksHome extends React.Component {
 
   handleAddActivity = (activityInfo) => {
     this.setState({
-      currentTask: activityInfo
+      SelectedActivityContainer: activityInfo
     })
   }
 
   handleConfirmActivity = (activityInfo) => {
-    console.log(this.props);
     fetch('http://localhost:3000/api/v1/activities', {
       method: 'POST',
       headers: {
@@ -56,10 +55,10 @@ class TasksHome extends React.Component {
     return (
       <div className="current-task">
         <h1>Tasks Home</h1>
-        {this.state.currentTask ? <CurrentTask currentTask={this.state.currentTask} handleAddActivity={this.handleConfirmActivity} /> : <CreateTask handleInput={this.handleInput} businesses={this.state.businesses} handleAddActivity={this.handleAddActivity} />}
+        {this.state.SelectedActivityContainer ? <SelectedActivityContainer SelectedActivityContainer={this.state.SelectedActivityContainer} handleAddActivity={this.handleConfirmActivity} /> : <CreateTask user={this.props.user} handleInput={this.handleInput} businesses={this.state.businesses} handleAddActivity={this.handleAddActivity} />}
       </div>
     )
   }
 }
 
-export default TasksHome
+export default ActivitiesHome
