@@ -28,7 +28,7 @@ render() {
       <h1>Log In</h1>
       <form onSubmit={this.loginSubmitHandler}>
         <input type="text" placeholder="email"
-        value={this.state.username} onChange={this.changeHandler} />
+        value={this.state.email} onChange={this.changeHandler} />
         <input type="password" placeholder="password"
         value={this.state.password} onChange={this.changeHandler} />
         <button>Log In</button>

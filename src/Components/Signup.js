@@ -17,7 +17,7 @@ signupSubmitHandler = e => {
   e.preventDefault();
   this.props.userSubmitHandler(this.state);
   this.setState({
-    username: "",
+    email: "",
     password: ""
   })
 }
@@ -27,9 +27,9 @@ render() {
   return (
     <div className="signup">
       <h1>Sign up</h1>
-      <form onSubmit={this.signupSubmitHandler}>
+      <form onSubmit={this.userSubmitHandler}>
         <input type="text" placeholder="email"
-        value={this.state.username} onChange={this.changeHandler} />
+        value={this.state.email} onChange={this.changeHandler} />
         <input type="password" placeholder="password"
         value={this.state.password} onChange={this.changeHandler} />
         <button>Sign Up</button>
