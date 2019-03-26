@@ -35,7 +35,12 @@ class App extends Component {
             this.setState({ user }, () => {
               console.log(user);
               let exp = user.experiences.find(exp => !exp.complete)
-              exp ? this.props.history.push("/experiences-home") && this.setState({currentExperience: exp}) : this.props.history.push("/activities-home");
+              if (exp ) {
+                this.props.history.push("/experiences-home")
+                this.setState({currentExperience: exp})
+              } else {
+              this.props.history.push("/activities-home");
+            }
             });
           })
       : this.props.history.push("/signup");
