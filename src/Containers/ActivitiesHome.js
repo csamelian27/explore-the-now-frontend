@@ -20,7 +20,9 @@ class ActivitiesHome extends React.Component {
       }
     })
       .then(resp => resp.json())
-      .then(businesses => this.setState({businesses: businesses.businesses}))
+      .then(businesses =>
+        { debugger
+        this.setState({businesses: businesses.businesses})}) 
   }
 
   handleAddActivity = (activityInfo) => {

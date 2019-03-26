@@ -114,6 +114,12 @@ class App extends Component {
       })
   }
 
+  handleDeleteExp = () => {
+    this.setState({
+      currentExperience: null
+    })
+  }
+
   render() {
     console.log(this.state);
     return (
@@ -121,7 +127,7 @@ class App extends Component {
         <Navbar user={this.state.user} />
         <Switch>
           <Route path="/activities-home" render={() => <ActivitiesHome user={this.state.user} handleConfirmActivity={this.handleConfirmActivity}/>} />
-          <Route path="/experiences-home" render={() => <ExperiencesHome user={this.state.user} currentExperience={this.state.currentExperience} handleSetCurrentExp={this.handleSetCurrentExp}/>} />
+          <Route path="/experiences-home" render={() => <ExperiencesHome user={this.state.user} currentExperience={this.state.currentExperience} handleSetCurrentExp={this.handleSetCurrentExp} handleDeleteExp={this.handleDeleteExp} />} />
           <Route path="/login" render={() => <Login loginSubmitHandler={this.loginSubmitHandler} user={this.state.user}/>} />
           <Route path="/signup" render={() => <Signup signupSubmitHandler={this.signupSubmitHandler} user={this.state.user}/>} />
           <Route exact path="/" component={Home}/>

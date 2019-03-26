@@ -22,9 +22,10 @@ class ExperienceCard extends React.Component {
           <li><a href={this.props.business.activity.url} target="_blank">Visit Website</a></li>
           <li><a href={this.props.business.activity.display_phone} target="_blank">Call Business</a></li>
         </ul>
-        <div className="fab3" onClick={() => this.props.handleAddActivity(this.props.business)}><i className='fa fa-thumbs-up fa-3x'></i></div>
-        <div className="fab2" onClick={() => this.props.handleAddActivity(this.props.business)}><i className='fa fa-thumbs-down fa-3x'></i></div>
-        <div className="fab" onClick={() => this.props.handleAddActivity(this.props.business)}><i className='fa fa-calendar-check fa-3x'></i></div>
+        <div className="fab3" onClick={(e) => this.props.handleExperienceCard(e, this.props.business)}><i className='fa fa-thumbs-up fa-3x'></i></div>
+        <div className="fab2" onClick={(e) => this.props.handleExperienceCard(e, this.props.business)}><i className='fa fa-thumbs-down fa-3x'></i></div>
+        <div className="fab4" onClick={(e) => this.props.handleExperienceCard(e, this.props.business)}><i className='fa fa-calendar-times fa-3x'></i></div>
+        <div className="fab" onClick={(e) => this.props.handleExperienceCard(e, this.props.business)}><i className='fa fa-calendar-check fa-3x'></i></div>
         </div>
       </div>
     )
