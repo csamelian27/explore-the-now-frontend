@@ -2,10 +2,6 @@ import React from 'react';
 
 class ActivityCard extends React.Component {
 
-  state = {
-
-  }
-
   render() {
     return (
       <div className="activity-card">

@@ -1,7 +1,7 @@
 import React from 'react';
 import ActivityCard from './ActivityCard'
 
-class CreateTask extends React.Component {
+class ActivityForm extends React.Component {
 
   state = {
     term: '',
@@ -54,4 +54,4 @@ class CreateTask extends React.Component {
   }
 }
 
-export default CreateTask
+export default ActivityForm
