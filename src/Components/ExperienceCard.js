@@ -17,14 +17,15 @@ class ExperienceCard extends React.Component {
           <p>Location: {this.props.business.activity.location}</p>
           <p>Rating: {this.props.business.activity.rating}</p>
         </div>
-        <h5>{this.props.business.date}</h5>
+        <h5>{this.props.business.date.split(' G')[0]}</h5>
         <ul>
           <li><a href={this.props.business.activity.url} target="_blank">Visit Website</a></li>
           <li><a href={this.props.business.activity.display_phone} target="_blank">Call Business</a></li>
         </ul>
-        <div className="fab3" onClick={() => this.props.handleAddActivity(this.props.business)}><i className='fa fa-thumbs-up fa-3x'></i></div>
-        <div className="fab2" onClick={() => this.props.handleAddActivity(this.props.business)}><i className='fa fa-thumbs-down fa-3x'></i></div>
-        <div className="fab" onClick={() => this.props.handleAddActivity(this.props.business)}><i className='fa fa-calendar-check fa-3x'></i></div>
+        <div className="fab3" onClick={(e) => this.props.handleExperienceCard(e, this.props.business)}><i className='fa fa-thumbs-up fa-3x'></i></div>
+        <div className="fab2" onClick={(e) => this.props.handleExperienceCard(e, this.props.business)}><i className='fa fa-thumbs-down fa-3x'></i></div>
+        <div className="fab4" onClick={(e) => this.props.handleExperienceCard(e, this.props.business)}><i className='fa fa-calendar-times fa-3x'></i></div>
+        <div className="fab" onClick={(e) => this.props.handleExperienceCard(e, this.props.business)}><i className='fa fa-calendar-check fa-3x'></i></div>
         </div>
       </div>
     )

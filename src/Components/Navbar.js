@@ -18,6 +18,21 @@ const Nav = (props) => {
                     Explore the Now
                 </a>
                 </NavLink>
+                <NavLink to="/experiences-home">
+                <a className="navbar-brand">
+                    Experiences
+                </a>
+                </NavLink>
+                <NavLink to="/activities-home">
+                <a className="navbar-brand">
+                    Activities
+                </a>
+                </NavLink>
+                <NavLink to="/profile">
+                <a className="navbar-brand">
+                    View Profile
+                </a>
+                </NavLink>
             </div>
               <NavLink to="/login">
                 {props.user && localStorage.token ? <button type="button" className="btn btn-light navbar-btn navbar-right" onClick={handleLogout} >Log Out</button> : <button type="button" className="btn btn-light navbar-btn navbar-right">Log in</button>}
@@ -25,7 +40,6 @@ const Nav = (props) => {
               <NavLink to="/signup">
               <button type="button" className="btn btn-light navbar-btn navbar-right">Sign up</button>
               </NavLink>
-    
 
         </div>
     </nav>
