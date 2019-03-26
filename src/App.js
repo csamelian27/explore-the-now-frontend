@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch, withRouter } from "react-router-dom";
 import Navbar from './Components/Navbar';
-import TasksHome from './Containers/TasksHome'
+import ActivitiesHome from './Containers/ActivitiesHome'
 import Home from './Components/Home';
 import Login from './Components/Login'
 import Signup from './Components/Signup'
@@ -25,7 +25,7 @@ class App extends Component {
           headers: {
             "content-type": "application/json",
             "accepts": "application/json",
-            "Authorization": `${token}`
+            "Authorization": `Bearer ${token}`
           }
         })
           .then(resp => resp.json())
@@ -84,11 +84,12 @@ class App extends Component {
 };
 
   render() {
+    console.log(this.state);
     return (
       <div className="App">
-        <Navbar />
+        <Navbar user={this.state.user} />
         <Switch>
-          <Route path="/tasks-home" render={() => <TasksHome user={this.state.user}/>} />
+          <Route path="/tasks-home" render={() => <ActivitiesHome user={this.state.user}/>} />
           <Route path="/login" render={() => <Login loginSubmitHandler={this.loginSubmitHandler} user={this.state.user}/>} />
           <Route path="/signup" render={() => <Signup signupSubmitHandler={this.signupSubmitHandler} user={this.state.user}/>} />
           <Route exact path="/" component={Home}/>
