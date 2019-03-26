@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Switch, withRouter } from "react-router-dom";
 import Navbar from './Components/Navbar';
 import ActivitiesHome from './Containers/ActivitiesHome'
+import ExperiencesHome from './Containers/ExperiencesHome'
 import Home from './Components/Home';
 import Login from './Components/Login'
 import Signup from './Components/Signup'
@@ -13,7 +14,8 @@ import Signup from './Components/Signup'
 class App extends Component {
 
   state = {
-    user: {}
+    user: {},
+    currentExperience: null
   }
 
 // grabs the current user with the backend route based on if a token is in localstorage.
@@ -32,7 +34,8 @@ class App extends Component {
           .then(user => {
             this.setState({ user }, () => {
               console.log(user);
-              this.props.history.push("/tasks-home");
+              let exp = user.experiences.find(exp => !exp.complete)
+              exp ? this.props.history.push("/experiences-home") && this.setState({currentExperience: exp}) : this.props.history.push("/activities-home");
             });
           })
       : this.props.history.push("/signup");
@@ -40,7 +43,7 @@ class App extends Component {
 
 // Sign up submit handler posts userInfo (which is the current sign up form state) to
 // our backend API. It also saves a jwt token to the local storage and pushes the
-// user to "/tasks-home"
+// user to "/activities-home"
   signupSubmitHandler = (userInfo) => {
     fetch("http://localhost:3000/api/v1/users", {
       method: "POST",
@@ -55,7 +58,7 @@ class App extends Component {
         console.log(userData);
         this.setState({ user: userData.user}, () => {
           localStorage.setItem("token", userData.jwt);
-          this.props.history.push("/tasks-home");
+          this.props.history.push("/activities-home");
         });
       });
   }
@@ -78,10 +81,38 @@ class App extends Component {
       } else {
         this.setState({ user: userData.user })
         localStorage.setItem("token", userData.jwt)
-        this.props.history.push("/tasks-home")
+        this.props.history.push("/activities-home")
       }
     });
-};
+  };
+
+  handleSetCurrentExp = () => {
+    console.log('hi');
+  }
+
+  handleConfirmActivity = (activityInfo) => {
+    fetch('http://localhost:3000/api/v1/activities', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accepts': 'application/json'
+      },
+      body: JSON.stringify({activity: {term: activityInfo.categories[0].title, location: activityInfo.location.display_address.join(", "), name: activityInfo.name, image_url: activityInfo.image_url, url: activityInfo.url, rating: activityInfo.rating, display_phone: activityInfo.display_phone}})
+    }).then(resp => resp.json())
+      .then(activity => {
+        fetch('http://localhost:3000/api/v1/experiences', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accepts': 'application/json'
+          },
+          body: JSON.stringify({experience: {date:Date().toString(), user_id: this.state.user.id, activity_id: activity.id}})
+        }).then(resp => resp.json())
+          .then(experience => this.setState({
+            currentExperience: experience
+          }, () => this.props.history.push("/experiences-home")))
+      })
+  }
 
   render() {
     console.log(this.state);
@@ -89,7 +120,8 @@ class App extends Component {
       <div className="App">
         <Navbar user={this.state.user} />
         <Switch>
-          <Route path="/tasks-home" render={() => <ActivitiesHome user={this.state.user}/>} />
+          <Route path="/activities-home" render={() => <ActivitiesHome user={this.state.user} handleConfirmActivity={this.handleConfirmActivity}/>} />
+          <Route path="/experiences-home" render={() => <ExperiencesHome user={this.state.user} currentExperience={this.state.currentExperience} handleSetCurrentExp={this.handleSetCurrentExp}/>} />
           <Route path="/login" render={() => <Login loginSubmitHandler={this.loginSubmitHandler} user={this.state.user}/>} />
           <Route path="/signup" render={() => <Signup signupSubmitHandler={this.signupSubmitHandler} user={this.state.user}/>} />
           <Route exact path="/" component={Home}/>
