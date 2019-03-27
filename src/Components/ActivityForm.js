@@ -39,18 +39,18 @@ class ActivityForm extends React.Component {
     console.log(activityCards);
     return (
       <div>
-      <div className="form-style-6">
-        <h1>Create Task</h1>
-        <form onSubmit={this.handleSubmit}>
-        <label for="term">Search term</label>
-          <input type="text" name="term" placeholder="term" value={this.state.term} onChange={this.handleChange} />
+      <div className="login wrapper">
+        <form className="form-signin" onSubmit={this.handleSubmit}>
+          <h1 class="form-signin-heading">Create Task</h1>
+          <label for="term">Search term</label>
+          <input className="form-control" type="text" name="term" placeholder="term" value={this.state.term} onChange={this.handleChange} />
           <label for="location">Zip Code</label>
-          <input type="text" name="location" placeholder="location" value={this.state.location} onChange={this.handleChange} />
+          <input className="form-control" type="text" name="location" placeholder="location" value={this.state.location} onChange={this.handleChange} />
           <label for="location">Price from 1-4</label>
-          <input type="text" name="price" placeholder="price" value={this.state.price} onChange={this.handleChange} />
+          <input className="form-control" type="text" name="price" placeholder="price" value={this.state.price} onChange={this.handleChange} />
           <label for="radius">Distance in meters</label>
-          <input type="text" name="radius" placeholder="radius" value={this.state.radius} onChange={this.handleChange} />
-          <input type="submit" value="Submit!" />
+          <input className="form-control" type="text" name="radius" placeholder="radius" value={this.state.radius} onChange={this.handleChange} />
+          <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit!"> Search </button>
         </form>
         </div>
         {activityCards}
