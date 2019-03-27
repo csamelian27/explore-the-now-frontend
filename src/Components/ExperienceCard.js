@@ -21,6 +21,7 @@ class ExperienceCard extends React.Component {
           document.getElementById("timer-secs").innerHTML = ("0"+secs).slice(-2) +
           "<span class='label'>SEC(S)</span>";
         }} else {
+          clearInterval(timer)
           document.getElementById("timer").innerHTML = "The countdown is over!";
       }
     }, 1000)
@@ -41,7 +42,6 @@ class ExperienceCard extends React.Component {
           <p>Location: {this.props.business.activity ? this.props.business.activity.location : this.props.activity.location}</p>
           <p>Rating: {this.props.business.activity ? this.props.business.activity.rating : this.props.activity.rating}</p>
         </div>
-        <h5>Created Time in milliseconds: {this.props.business.current_time}, Alotted minutes {this.props.business.set_minutes}</h5>
         <ul>
           <li><a href={this.props.business.activity ? this.props.business.activity.url : this.props.activity.url} target="_blank">Visit Website</a></li>
           <li><a href={this.props.business.activity ? this.props.business.activity.display_phone : this.props.activity.display_phone} target="_blank">Call Business</a></li>
@@ -49,7 +49,7 @@ class ExperienceCard extends React.Component {
         <div class="container">
           <p id="timer">
               <span id="timer-days">{this.createTimer()}</span>
-              <span id="timer-hours"></span>
+              <span id="timer-hours"></span><br></br>
               <span id="timer-mins"></span>
               <span id="timer-secs"></span>
           </p>

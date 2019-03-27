@@ -106,7 +106,9 @@ class App extends Component {
         body: JSON.stringify({worth_it: true})
       })
         .then(resp=>resp.json())
-        .then(console.log)
+        .then(nada => {
+          e.target.id = 'green'
+        })
     } else if(e.target.className === 'fab2' || e.target.className === 'fa fa-thumbs-down fa-3x') {
       console.log('thumbs down');
       fetch(`http://localhost:3000/api/v1/experiences/${businessInfo.id}`, {
@@ -118,7 +120,9 @@ class App extends Component {
         body: JSON.stringify({worth_it: false})
       })
         .then(resp=>resp.json())
-        .then(console.log)
+        .then(nada => {
+          e.target.id = 'red'
+        })
     } else if(e.target.className === 'fab4' || e.target.className === 'fa fa-calendar-times fa-3x') {
       console.log('cal x');
       fetch(`http://localhost:3000/api/v1/experiences/${businessInfo.id}`, {

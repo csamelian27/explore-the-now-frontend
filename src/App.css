@@ -2,6 +2,26 @@
   text-align: center;
 }
 
+.label {
+  font-size: 2rem;
+  color: black;
+}
+
+#timer {
+  color: black;
+  font-size: 3rem;
+  margin-right: 200px;
+  margin-top: 50px;
+}
+
+#green {
+  background-color: green;
+}
+
+#red {
+  background-color: red;
+}
+
 /* navbar */
 .navbar-default {
     background-color: rgb(87	191	210	);
