@@ -1,7 +1,13 @@
 import React from 'react';
-
-class ActivityCard extends React.Component {
-
+class ActivityCardwithTime extends React.Component {
+  state = {
+    setMinutes: ''
+  }
+  handleChange = (e) => {
+    this.setState({
+      setMinutes: e.target.value
+    })
+  }
   render() {
     return (
       <div className="activity-card">
@@ -16,11 +22,12 @@ class ActivityCard extends React.Component {
           <p>Magnesium is one of the six essential macro-minerals that is required by the body for energy production and synthesis of protein and enzymes. It contributes to the development of bones and most importantly it is responsible for synthesis of your DNA and RNA. A new report that has appeared in theBritish Journal of Cancer, gives you another reason to add more magnesium to your diet...</p>
         </div>
         <ul><li><a href={this.props.business.url} target="_blank">Visit Website</a></li></ul>
-        <div className="fab" onClick={() => this.props.handleAddActivity(this.props.business)}><i className={this.props.button}></i></div>
+        <label htmlFor="radius">Set time (mins)</label>
+        <input className="form-control" type="text" name="setMinutes" placeholder="number" value={this.state.setMinutes} onChange={this.handleChange} />
+        <div className="fab" onClick={() => this.props.handleAddActivity(this.props.business, this.state)}><i className={this.props.button}></i></div>
         </div>
       </div>
     )
   }
 }
-
-export default ActivityCard
+export default ActivityCardwithTime

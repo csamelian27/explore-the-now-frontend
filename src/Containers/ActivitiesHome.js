@@ -1,6 +1,5 @@
 import React from 'react';
 import ActivityForm from '../Components/ActivityForm';
-import ActivityOptions from '../Components/ActivityOptions';
 import SelectedActivityContainer from '../Components/SelectedActivityContainer';
 
 class ActivitiesHome extends React.Component {
