@@ -125,7 +125,7 @@ class App extends Component {
         method: 'DELETE'
       })
       this.props.history.push('/activities-home')
-      this.props.handleDeleteExp()
+      this.handleDeleteExp()
     } else if(e.target.className === 'fab' || e.target.className === 'fa fa-calendar-check fa-3x') {
       console.log('cal check');
       fetch(`http://localhost:3000/api/v1/experiences/${businessInfo.id}`, {
@@ -147,7 +147,7 @@ class App extends Component {
     }
   }
 
-  handleConfirmActivity = (activityInfo) => {
+  handleConfirmActivity = (activityInfo, mins) => {
     fetch('http://localhost:3000/api/v1/activities', {
       method: 'POST',
       headers: {
@@ -163,7 +163,7 @@ class App extends Component {
             'Content-Type': 'application/json',
             'Accepts': 'application/json'
           },
-          body: JSON.stringify({experience: {date:Date().toString(), user_id: this.state.user.id, activity_id: activity.id}})
+          body: JSON.stringify({experience: {current_time: new Date().getTime().toString(), set_minutes: mins.setMinutes, user_id: this.state.user.id, activity_id: activity.id}})
         }).then(resp => resp.json())
           .then(experience => this.setState({
             currentExperience: experience

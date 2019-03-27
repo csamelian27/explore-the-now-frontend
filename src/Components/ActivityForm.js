@@ -23,8 +23,8 @@ class ActivityForm extends React.Component {
     this.setState({
       term: '',
       location: '',
-      price: '',
-      radius: ''
+      price: this.props.user.price,
+      radius: this.props.user.radius
     })
   }
 
