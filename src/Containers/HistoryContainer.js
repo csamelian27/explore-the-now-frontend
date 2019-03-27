@@ -13,7 +13,7 @@ class HistoryContainer extends React.Component {
   render() {
     return (
       <div>
-        <h1 className="headerz" >Past Experiences</h1>
+        <h1 className="headerz">Past Experiences</h1>
           <div className="history-home">
             {this.props.experiences ? this.generateHistoryCards() : 'Go Gain Experiences!'}
         </div>

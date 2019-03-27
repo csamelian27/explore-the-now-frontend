@@ -21,9 +21,10 @@ class ExperienceCard extends React.Component {
           document.getElementById("timer-secs").innerHTML = ("0"+secs).slice(-2) +
           "<span class='label'>SEC(S)</span>";
         }} else {
+          if(t <= 0 && document.getElementById("timer-days")) {
           clearInterval(timer)
           document.getElementById("timer").innerHTML = "The countdown is over!";
-      }
+      }}
     }, 1000)
   }
 
