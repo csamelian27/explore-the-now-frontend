@@ -15,7 +15,8 @@ class App extends Component {
 
   state = {
     user: {},
-    currentExperience: null
+    currentExperience: null,
+    currentActivity: null
   }
 
 // grabs the current user with the backend route based on if a token is in localstorage.
