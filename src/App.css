@@ -423,6 +423,13 @@ body {
   font-family: 'Chivo', sans-serif;
 }
 
+.headerz {
+  font-family: 'Chivo', sans-serif;
+  font-size: 100px;
+  color: rgb(246	212	123	);
+  margin-bottom: -80px;
+}
+
 .history-home {
   display: flex;
   flex-wrap: wrap;

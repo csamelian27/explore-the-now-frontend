@@ -28,11 +28,6 @@ const Nav = (props) => {
                     Activities
                 </a>
                 </NavLink>
-                <NavLink to="/profile">
-                <a className="navbar-brand">
-                    View Profile
-                </a>
-                </NavLink>
             </div>
               <NavLink to="/login">
                 {props.user && localStorage.token ? <button type="button" className="btn btn-light navbar-btn navbar-right" onClick={handleLogout} >Log Out</button> : <button type="button" className="btn btn-light navbar-btn navbar-right">Log in</button>}
@@ -47,3 +42,11 @@ const Nav = (props) => {
 }
 
 export default Nav;
+
+
+
+// <NavLink to="/profile">
+// <a className="navbar-brand">
+// View Profile
+// </a>
+// </NavLink>
