@@ -4,7 +4,7 @@
 
 /* navbar */
 .navbar-default {
-    background-color: #ED2939;
+    background-color: rgb(87	191	210	);
     border-color: #E7E7E7;
     height: 50px;
 }
@@ -82,24 +82,16 @@
   margin-left: 10px;
 }
 
-.home {
-  margin-top: 100px;
-}
+/* body {
+  background-image: url('https://lh3.googleusercontent.com/YGzDPqUsCX7KMsnB1gY7ONYMdmTN3DagWZy0OLlXVNq3SJAqf2aluvx3SWa_E0Z8zN--2pnwg_z-sHDui_kGqfOSCujl90rmlzOLs4LiFq48vxKVIR3SSg9J8uXUAiUPP4V5Q1YzHy1ZKQuv34-DLyw9zM4cn067lmSnmPrkFB7KUh6tSYuLfsjsB_Q1HnhqzaVICsfQOPNE3EMN7LiHCGXO4NCor36FcQ9Bj46jgb5-JDD9ByhOmVVJPosG5YNc7EOTN3hkEIuFtqA-kVincCS-fNWa6PTkOr98XN6q6rxhmKYqd4L3N3uL2tg-WxuVqf2MTy9uJlj9s7D8csaEKuiB5xRhXSkd_Ia64geWRPz4csAc4l_7SxOOzciyXUQRwv7FEos2xVYLv2m43Lc0zPeX6vUPXXWuikRlTnYKpF7Rke-p9AZfMBOpV7N2ktOyEwBWTlHzpO_8YCufNdD4weDkUT3tcEH8OFl0mEFFftXl-QDKNuW3igkyLeNDIiVNqR8l6xQeQZ2m5raUwRnRQG-YOkRVTu5SCZgcjksve6uPE7hLNi3ROy_TMQdE4yLd4TEGSuw20v8Xn8E7ypCiLkiid_n8QuNW5hVqGAsjhkJdHtjgjL1Lyk4AF6shE7TurLiMEA2OwPaQkpXietUp2YHeuKzQjGd0XaJB2QO0ixutJEQhgXvt8oQeK22qosHggQtOt4MCbJbT7poh1TH7z5Xz0g=w2590-h1456-no');
+} */
 
 .create-task {
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 .current-task {
-  margin-top: 100px;
-}
-
-.signup {
-  margin-top: 100px;
-}
-
-.login {
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 
@@ -267,6 +259,7 @@ li {
 }
 
 /* Floating action button */
+
 .fab {
   position: absolute;
   right: 190px;
@@ -383,15 +376,37 @@ li {
   src: local('Source Sans Pro Black'), local('SourceSansPro-Black'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwlxdr.ttf) format('truetype');
 }
 body {
-  background: #dce1df;
+  background-image: url('https://lh3.googleusercontent.com/YGzDPqUsCX7KMsnB1gY7ONYMdmTN3DagWZy0OLlXVNq3SJAqf2aluvx3SWa_E0Z8zN--2pnwg_z-sHDui_kGqfOSCujl90rmlzOLs4LiFq48vxKVIR3SSg9J8uXUAiUPP4V5Q1YzHy1ZKQuv34-DLyw9zM4cn067lmSnmPrkFB7KUh6tSYuLfsjsB_Q1HnhqzaVICsfQOPNE3EMN7LiHCGXO4NCor36FcQ9Bj46jgb5-JDD9ByhOmVVJPosG5YNc7EOTN3hkEIuFtqA-kVincCS-fNWa6PTkOr98XN6q6rxhmKYqd4L3N3uL2tg-WxuVqf2MTy9uJlj9s7D8csaEKuiB5xRhXSkd_Ia64geWRPz4csAc4l_7SxOOzciyXUQRwv7FEos2xVYLv2m43Lc0zPeX6vUPXXWuikRlTnYKpF7Rke-p9AZfMBOpV7N2ktOyEwBWTlHzpO_8YCufNdD4weDkUT3tcEH8OFl0mEFFftXl-QDKNuW3igkyLeNDIiVNqR8l6xQeQZ2m5raUwRnRQG-YOkRVTu5SCZgcjksve6uPE7hLNi3ROy_TMQdE4yLd4TEGSuw20v8Xn8E7ypCiLkiid_n8QuNW5hVqGAsjhkJdHtjgjL1Lyk4AF6shE7TurLiMEA2OwPaQkpXietUp2YHeuKzQjGd0XaJB2QO0ixutJEQhgXvt8oQeK22qosHggQtOt4MCbJbT7poh1TH7z5Xz0g=w2590-h1456-no');
   color: #4f585e;
   font-family: "Source Sans Pro", sans-serif;
   text-rendering: optimizeLegibility;
+}
+@import url('https://fonts.googleapis.com/css?family=Chivo:900');
+#title1 {
+  margin-top: 160px;
+  font-size: 200px;
+  color: rgb(246	212	123	);
+  font-family: 'Chivo', sans-serif;
+}
+
+#title2 {
+  margin-top: -100px;
+  font-size: 100px;
+  color: rgb(246	212	123	);
+  font-family: 'Chivo', sans-serif;
+}
+
+#title3 {
+  margin-top: -180px;
+  font-size: 300px;
+  color: rgb(246	212	123	);
+  font-family: 'Chivo', sans-serif;
 }
 
 .history-home {
   display: flex;
   flex-wrap: wrap;
+  margin-left: 100px;
 }
 
 a.btn {
@@ -438,8 +453,14 @@ div.history-card {
   z-index: 1;
 }
 div.history-card img {
-  max-width: 300px;
+  width: 300px;
+  height: 300px;
 }
+div.card-title {
+  width: 300px;
+  height: 120px;
+}
+
 div.history-card div.card-title {
   background: #ffffff;
   padding: 6px 15px 10px;
@@ -561,8 +582,9 @@ div.history-card.show div.flap2 {
 	padding: 16px;
 	background: #F7F7F7;
 }
+
 .form-style-6 h1{
-	background: #ED2939;
+	background: rgb(44, 111, 174);
 	padding: 20px 0;
 	font-size: 140%;
 	font-weight: 300;
@@ -633,3 +655,48 @@ div.history-card.show div.flap2 {
 }
 
 /* End History Card CSS */
+
+/* login and signup css */
+
+.wrapper {
+ margin-top: 150px;
+ margin-bottom: 80px;
+ background-color: transparent;
+}
+
+.form-signin {
+ max-width: 380px;
+ padding: 15px 35px 45px;
+ margin: 0 auto;
+ background-color: #F7F7F7;
+ border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+ margin-bottom: 30px;
+}
+.form-signin .checkbox {
+ font-weight: normal;
+}
+.form-signin .form-control {
+ position: relative;
+ font-size: 16px;
+ height: auto;
+ padding: 10px;
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+ z-index: 2;
+}
+.form-signin input[type="email"] {
+ margin-bottom: -1px;
+ border-bottom-left-radius: 0;
+ border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+ margin-bottom: 20px;
+ border-top-left-radius: 0;
+ border-top-right-radius: 0;
+}

@@ -15,7 +15,8 @@ class App extends Component {
 
   state = {
     user: {},
-    currentExperience: null
+    currentExperience: null,
+    currentActivity: null
   }
 
 // grabs the current user with the backend route based on if a token is in localstorage.
@@ -35,7 +36,13 @@ class App extends Component {
             this.setState({ user }, () => {
               console.log(user);
               let exp = user.experiences.find(exp => !exp.complete)
-              exp ? this.props.history.push("/experiences-home") && this.setState({currentExperience: exp}) : this.props.history.push("/activities-home");
+              if(exp) {
+                let act = user.activities.find(act => act.id === exp.activity_id)
+                this.props.history.push("/experiences-home")
+                this.setState({currentExperience: exp, currentActivity: act})
+              } else {
+                this.props.history.push("/activities-home");
+              }
             });
           })
       : this.props.history.push("/signup");
@@ -86,8 +93,58 @@ class App extends Component {
     });
   };
 
-  handleSetCurrentExp = () => {
-    console.log('hi');
+  handleExperienceCard = (e, businessInfo) => {
+    e.persist()
+    if(e.target.className === 'fab3' || e.target.className === 'fa fa-thumbs-up fa-3x') {
+      console.log('thumbs up');
+      fetch(`http://localhost:3000/api/v1/experiences/${businessInfo.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accepts': 'application/json'
+        },
+        body: JSON.stringify({worth_it: true})
+      })
+        .then(resp=>resp.json())
+        .then(console.log)
+    } else if(e.target.className === 'fab2' || e.target.className === 'fa fa-thumbs-down fa-3x') {
+      console.log('thumbs down');
+      fetch(`http://localhost:3000/api/v1/experiences/${businessInfo.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accepts': 'application/json'
+        },
+        body: JSON.stringify({worth_it: false})
+      })
+        .then(resp=>resp.json())
+        .then(console.log)
+    } else if(e.target.className === 'fab4' || e.target.className === 'fa fa-calendar-times fa-3x') {
+      console.log('cal x');
+      fetch(`http://localhost:3000/api/v1/experiences/${businessInfo.id}`, {
+        method: 'DELETE'
+      })
+      this.props.history.push('/activities-home')
+      this.props.handleDeleteExp()
+    } else if(e.target.className === 'fab' || e.target.className === 'fa fa-calendar-check fa-3x') {
+      console.log('cal check');
+      fetch(`http://localhost:3000/api/v1/experiences/${businessInfo.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accepts': 'application/json'
+        },
+        body: JSON.stringify({complete: true})
+      })
+      .then(resp=>resp.json())
+      .then(userObj => {
+        this.props.history.push('/activities-home')
+        this.setState({
+          currentExperience: null,
+          user: userObj
+        })
+      })
+    }
   }
 
   handleConfirmActivity = (activityInfo) => {
@@ -127,7 +184,7 @@ class App extends Component {
         <Navbar user={this.state.user} />
         <Switch>
           <Route path="/activities-home" render={() => <ActivitiesHome user={this.state.user} handleConfirmActivity={this.handleConfirmActivity}/>} />
-          <Route path="/experiences-home" render={() => <ExperiencesHome user={this.state.user} currentExperience={this.state.currentExperience} handleSetCurrentExp={this.handleSetCurrentExp} handleDeleteExp={this.handleDeleteExp} />} />
+          <Route path="/experiences-home" render={() => <ExperiencesHome user={this.state.user} currentExperience={this.state.currentExperience} currentActivity={this.state.currentActivity} handleExperienceCard={this.handleExperienceCard} handleSetCurrentExp={this.handleSetCurrentExp} handleDeleteExp={this.handleDeleteExp} />} />
           <Route path="/login" render={() => <Login loginSubmitHandler={this.loginSubmitHandler} user={this.state.user}/>} />
           <Route path="/signup" render={() => <Signup signupSubmitHandler={this.signupSubmitHandler} user={this.state.user}/>} />
           <Route exact path="/" component={Home}/>

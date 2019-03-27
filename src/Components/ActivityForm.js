@@ -40,7 +40,7 @@ class ActivityForm extends React.Component {
     return (
       <div>
       <div className="form-style-6">
-        <h1>Create Task</h1>
+        <h1>Search Activities</h1>
         <form onSubmit={this.handleSubmit}>
         <label for="term">Search term</label>
           <input type="text" name="term" placeholder="term" value={this.state.term} onChange={this.handleChange} />
@@ -50,7 +50,7 @@ class ActivityForm extends React.Component {
           <input type="text" name="price" placeholder="price" value={this.state.price} onChange={this.handleChange} />
           <label for="radius">Distance in meters</label>
           <input type="text" name="radius" placeholder="radius" value={this.state.radius} onChange={this.handleChange} />
-          <input type="submit" value="Submit!" />
+          <button className="btn btn-lg btn-primary btn-block" type="submit">Submit!</button>
         </form>
         </div>
         {activityCards}

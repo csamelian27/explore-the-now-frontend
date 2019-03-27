@@ -20,9 +20,7 @@ class ActivitiesHome extends React.Component {
       }
     })
       .then(resp => resp.json())
-      .then(businesses =>
-        { debugger
-        this.setState({businesses: businesses.businesses})}) 
+      .then(businesses => this.setState({businesses: businesses.businesses}))
   }
 
   handleAddActivity = (activityInfo) => {
@@ -35,7 +33,6 @@ class ActivitiesHome extends React.Component {
     console.log(this.state);
     return (
       <div className="current-task">
-        <h1>Tasks Home</h1>
         {this.state.SelectedActivity ? <SelectedActivityContainer SelectedActivityContainer={this.state.SelectedActivity} handleAddActivity={this.props.handleConfirmActivity} /> : <ActivityForm user={this.props.user} handleInput={this.handleInput} businesses={this.state.businesses} handleAddActivity={this.handleAddActivity} />}
       </div>
     )

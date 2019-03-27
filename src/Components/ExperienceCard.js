@@ -7,20 +7,20 @@ class ExperienceCard extends React.Component {
     return (
       <div className="experience-card">
         <div className="card">
-        <div className="thumbnail"><img className="left" src={this.props.business.activity.image_url}/></div>
+        <div className="thumbnail"><img className="left" src={this.props.business.activity ? this.props.business.activity.image_url : this.props.activity.image_url}/></div>
         <div className="right">
-          <h1>{this.props.business.activity.name}</h1>
+          <h1>{this.props.business.activity ? this.props.business.activity.name : this.props.activity.name}</h1>
           <div className="author">
-            <h2>{this.props.business.activity.term}</h2>
+            <h2>{this.props.business.activity ? this.props.business.activity.term : this.props.activity.term}</h2>
           </div>
           <div className="separator"></div>
-          <p>Location: {this.props.business.activity.location}</p>
-          <p>Rating: {this.props.business.activity.rating}</p>
+          <p>Location: {this.props.business.activity ? this.props.business.activity.location : this.props.activity.location}</p>
+          <p>Rating: {this.props.business.activity ? this.props.business.activity.rating : this.props.activity.rating}</p>
         </div>
         <h5>{this.props.business.date.split(' G')[0]}</h5>
         <ul>
-          <li><a href={this.props.business.activity.url} target="_blank">Visit Website</a></li>
-          <li><a href={this.props.business.activity.display_phone} target="_blank">Call Business</a></li>
+          <li><a href={this.props.business.activity ? this.props.business.activity.url : this.props.activity.url} target="_blank">Visit Website</a></li>
+          <li><a href={this.props.business.activity ? this.props.business.activity.display_phone : this.props.activity.display_phone} target="_blank">Call Business</a></li>
         </ul>
         <div className="fab3" onClick={(e) => this.props.handleExperienceCard(e, this.props.business)}><i className='fa fa-thumbs-up fa-3x'></i></div>
         <div className="fab2" onClick={(e) => this.props.handleExperienceCard(e, this.props.business)}><i className='fa fa-thumbs-down fa-3x'></i></div>

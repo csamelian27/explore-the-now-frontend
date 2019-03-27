@@ -8,15 +8,12 @@ class HistoryCard extends React.Component {
       <div className="experience-card">
         <div className="history-cards">
           <div className="history-card">
-        <img src={this.props.activity.image_url}/>
+        <img id="history-img" src={this.props.activity.image_url}/>
             <div className="card-title">
-              <a href="#" className="toggle-info btn">
-                <span className="left"></span>
-                <span className="right"></span>
-              </a>
               <h2>
-                  {this.props.activity.name}
-                  <small>Image from unsplash.com</small>
+                  {this.props.activity.name}<br></br>
+                  Rating: {this.props.activity.rating}<br></br>
+                  <a href={this.props.activity.url}>Visit Website</a><br></br>
               </h2>
             </div>
             <div className="card-flap flap1">
