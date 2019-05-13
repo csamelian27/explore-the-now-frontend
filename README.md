@@ -13,7 +13,8 @@ https://vimeo.com/332568343
 
 
 ## Run
-**Make sure you have Postgresql running**
+>**Make sure you have Postgresql running**
+
 npm install
 
 npm start
